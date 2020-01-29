@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.difelix.bleach.models.enums.TiposPersonagem;
@@ -15,20 +17,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "personagem")
+@Table(name = "humano")
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class Personagem {
+@AllArgsConstructor
+public class Humano {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name = "nome", nullable = false, length = 255)
-	private String nome;
+	@Column(name = "habilidades", length = 300)
+	private String habilidades;
 	
-	@Column(name = "tipo", nullable = false)
-	private TiposPersonagem tipo;
+	@Column(name = "aliado")
+	private TiposPersonagem aliado;
+	
+	@JoinColumn(name = "personagem_humano")
+	@OneToOne
+	private Personagem personagem;
 }

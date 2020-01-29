@@ -1,4 +1,4 @@
-package com.difelix.bleach.models;
+package com.difelix.bleach.models.enums;
 
 public enum TiposPersonagem {
 

@@ -5,9 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-
-import com.difelix.bleach.models.enums.TiposPersonagem;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,20 +14,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "personagem")
+@Table(name = "hollow")
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class Personagem {
+@AllArgsConstructor
+public class Espada {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name = "nome", nullable = false, length = 255)
-	private String nome;
+	@Column(name = "posicao", nullable = false)
+	private Integer posicao;
 	
-	@Column(name = "tipo", nullable = false)
-	private TiposPersonagem tipo;
+	@Column(name = "hollowficacao", length = 300)
+	private String hollowficacao;
+	
+	@JoinColumn(name = "personagem_espada")
+	private Personagem personagem;
 }
